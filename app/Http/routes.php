@@ -27,5 +27,12 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::group(['prefix' => 'back-office'], function () {
+
+        Route::get('/', [
+            'as' => 'admin.home.index',
+            'uses' => 'Admin\Home@index'
+        ]);
+
+    });
 });

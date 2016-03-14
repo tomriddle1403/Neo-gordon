@@ -27,6 +27,11 @@
 </section>
 <script src="//cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/js/vendor/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/js/flat-ui.min.js"></script>
+<script>
+$(function () {
+  $('input[data-toggle=switch]').bootstrapSwitch()
+})
+</script>
 @yield('scripts')
 </body>
 </html>

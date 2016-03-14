@@ -28,11 +28,25 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     Route::group(['prefix' => 'back-office'], function () {
-
-        Route::get('/', [
-            'as' => 'admin.home.index',
-            'uses' => 'Admin\Home@index'
+        Route::get('login', [
+            'as' => 'admin.login',
+            'uses' => 'Admin\Auth@login',
         ]);
+
+        Route::get('logout', [
+            'as' => 'admin.logout',
+            'uses' => 'Admin\Auth@logout',
+        ]);
+
+        // For authenticated users only
+        // Route::group(['middleware' => ['auth']], function () {
+        Route::group([], function () {
+            Route::get('/', [
+                'as' => 'admin.home.index',
+                'uses' => 'Admin\Home@index'
+            ]);
+        });
+
 
     });
 });

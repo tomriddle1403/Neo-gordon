@@ -28,17 +28,25 @@ $(function() {
 @endsection
 
 @section ('main')
-<h1>Edit page: About Us</h1>
+<div class="row">
+    <div class="col-sm-10"><h1>Edit page: About Us</h1></div>
+    <div class="col-sm-2">
+        <div class="editor__actions">
+            <button class="btn btn-primary editor-actions__button" tile="Save"><i class="fa fa-check"></i></button>
+            <button class="btn btn-default editor-actions__button" tile="Cancel"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+</div>
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist" id="myTabs">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Content</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Images</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+    <li role="presentation" class="active"><a href="#tab-content" aria-controls="tab-content" role="tab" data-toggle="tab">Content</a></li>
+    <li role="presentation"><a href="#tab-images" aria-controls="tab-images" role="tab" data-toggle="tab">Images</a></li>
+    <li role="presentation"><a href="#tab-settings" aria-controls="tab-settings" role="tab" data-toggle="tab">Settings</a></li>
 </ul>
 <br>
 <!-- Tab panes -->
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
+    <div role="tabpanel" class="tab-pane active" id="tab-content">
         <!-- Create the editor container -->
         <div class="editor__wrapper">
             <!-- Create the toolbar container -->
@@ -56,9 +64,49 @@ $(function() {
             </div>
         </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="profile">profile...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">settings...</div>
+    <div role="tabpanel" class="tab-pane" id="tab-images">
+        <div class="row">
+            <div class="col-sm-3">
+                <figure class="editor__figure thumbnail">
+                    <button class="btn btn-danger btn-sm editor__btn-delete-image"><i class="fa fa-times"></i></button>
+                    <img src="https://placeimg.com/500/500/arch" alt="" class="img-responsive">
+                </figure>
+            </div>
+            <div class="col-sm-3">
+                <figure class="editor__figure thumbnail">
+                    <button class="btn btn-danger btn-sm editor__btn-delete-image"><i class="fa fa-times"></i></button>
+                    <img src="https://placeimg.com/500/500/arch" alt="" class="img-responsive">
+                </figure>
+            </div>
+            <div class="col-sm-3">
+                <figure class="editor__figure thumbnail">
+                    <button class="btn btn-danger btn-sm editor__btn-delete-image"><i class="fa fa-times"></i></button>
+                    <img src="https://placeimg.com/500/500/arch" alt="" class="img-responsive">
+                </figure>
+            </div>
+            <div class="col-sm-3">
+                <figure class="editor__figure thumbnail">
+                    <button class="btn btn-danger btn-sm editor__btn-delete-image"><i class="fa fa-times"></i></button>
+                    <img src="https://placeimg.com/500/500/arch" alt="" class="img-responsive">
+                </figure>
+            </div>
+            <div class="col-sm-3">
+                <figure class="editor__figure thumbnail">
+                    <button class="btn btn-danger btn-sm editor__btn-delete-image"><i class="fa fa-times"></i></button>
+                    <img src="https://placeimg.com/500/500/arch" alt="" class="img-responsive">
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="tab-settings">
+        <div class="form-group">
+            <input type="checkbox" data-toggle="switch" name="background-colour">
+            <label for="background-colour">Enable background for logo &amp; nav</label>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" data-toggle="switch" name="background-colour">
+            <label for="background-colour">Enable background for text</label>
+        </div>
+    </div>
 </div>
-
-<button type="submit" class="btn btn-primary">Save</button>
 @endsection

@@ -11,7 +11,7 @@ h1 {
 
 h1 { font-size: 3.6rem; }
 
-.no-gutter [class*="col"] {
+.no-gutter > [class*="col"] {
   padding-left:0;
   padding-right:0;
 }
@@ -36,6 +36,15 @@ h1 { font-size: 3.6rem; }
 .main {
   padding: 20px;
 }
+
+.editor__actions {
+  margin-top: 30px;
+  text-align: right;
+}
+  .editor-actions__button {
+    border-radius: 50%;
+  }
+
 .editor__wrapper {
   min-height: 500px;
   background-color: #fff;
@@ -49,3 +58,13 @@ h1 { font-size: 3.6rem; }
   .editor__textarea {
     height: 100%;
   }
+
+.editor__figure {
+  position: relative;
+}
+.editor__btn-delete-image {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+}

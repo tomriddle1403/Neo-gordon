@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name', 255);
             $table->integer('sort_order', 1);
-            $table->tinyinteger('published', 1);
+            $table->boolean('published', true);
         });
     }
 

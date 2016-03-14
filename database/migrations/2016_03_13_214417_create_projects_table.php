@@ -16,15 +16,11 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->index();
             $table->string('name', 255);
-            $table->tinyinteger('published');
+            $table->boolean('published');
             $table->text('description');
             $table->string('client', 255);
-            
-            $table->text('metadata');
-          /*  $table->string('cover_image', 255);
             $table->integer('sort_order');
-            $table->tinyinteger('flag_text');
-            $table->tinyinteger('flag_logo_nav');*/
+            $table->text('metadata');
             $table->timestamps();
         });
     }

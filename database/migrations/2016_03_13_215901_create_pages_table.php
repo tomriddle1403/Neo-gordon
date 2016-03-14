@@ -19,15 +19,6 @@ class CreatePagesTable extends Migration
             $table->text('content');
             $table->text('metadata');
             $table->timestamps();
-           /* $table->string('image', 255);
-            $table->string('image2', 255);
-            $table->string('image3', 255);
-            $table->string('image4', 255);
-            $table->string('image5', 255);
-           
-            $table->tinyinteger('flag_text');
-            $table->tinyinteger('flag_logo_nav');*/
-            
         });
     }
 

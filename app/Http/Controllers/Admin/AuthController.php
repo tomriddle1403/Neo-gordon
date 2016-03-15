@@ -14,10 +14,8 @@ class AuthController extends Controller
 
     public function login()
     {
-      //  dd(Auth::class);
-
         if ($this->auth->check() ){
-    	   return view('admin.home.index');
+            return view('admin.home.index');
         }
 
         return view('admin.login');
@@ -32,14 +30,14 @@ class AuthController extends Controller
 
         return view('admin.login')
             ->withErrors([
-                'login.failed' => trans('auth.err.failed'),
+                'login.failed' => trans('auth.failed'),
             ]);
     }
 
     public function logout()
     {
-
         $this->auth->logout();
+
         return redirect(route('admin.login'));
     }
 }

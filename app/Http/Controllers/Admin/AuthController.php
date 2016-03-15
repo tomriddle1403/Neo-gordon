@@ -30,7 +30,10 @@ class AuthController extends Controller
             return redirect()->intended(route('admin.home.index'));
         }
 
-        return view('admin.login');
+        return view('admin.login')
+            ->withErrors([
+                'login.failed' => trans('auth.err.failed'),
+            ]);
     }
 
     public function logout()

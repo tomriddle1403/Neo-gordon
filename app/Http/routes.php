@@ -29,21 +29,22 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
 
 
-    Route::controller('auth', 'Auth\AuthController', [
-        'getLogin' => 'auth.login',
-        'getLogout' => 'auth.logout'
-
-    ]);
 
     Route::group(['prefix' => 'back-office'], function () {
         Route::get('login', [
             'as' => 'admin.login',
-            'uses' => 'Admin\Auth@login',
+            'uses' => 'Admin\AuthController@login',
+        ]);
+
+        Route::post('login', [
+
+            'uses' => 'Admin\AuthController@getLogin',
         ]);
 
         Route::get('logout', [
             'as' => 'admin.logout',
-            'uses' => 'Auth\AuthController@getLogout',
+            'uses' => 'Admin\AuthController@logout',
+            //'uses' => 'Auth\AuthController@getLogout',
         ]);
 
         // For authenticated users only

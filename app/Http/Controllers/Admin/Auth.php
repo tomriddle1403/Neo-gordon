@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class Auth extends Controller
 {
-
     public function __construct()
     {
         $this->auth = app('auth');
@@ -21,9 +20,8 @@ class AuthController extends Controller
         return view('admin.login');
     }
 
-    public function getLogin(Request $request)
+    public function doLogin(Request $request)
     {
-
        if ($this->auth->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended(route('admin.home.index'));
         }

@@ -33,6 +33,7 @@ class MoveData extends Command
         $this->movePages();
         $this->moveProjects();
         $this->moveImages();
+        $this->moveUsers();
     }
 
     protected function moveProjects()
@@ -123,5 +124,14 @@ class MoveData extends Command
             return (array) $i;
         }, $this->old->table('project_images')->get());
         DB::table('images')->insert($projectImages);
+    }
+
+    protected function moveUsers()
+    {
+        $this->info('Moving `users` data');
+        $users = array_map(function ($i) {
+            return (array) $i;
+        }, $this->old->table('users')->get());
+        DB::table('users')->insert($users);
     }
 }

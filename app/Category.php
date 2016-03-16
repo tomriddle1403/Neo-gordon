@@ -4,14 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Category extends Model
 {
     protected $fillable = [
-        'name',
-        'slug',
-        'content',
-        'metadata',
+        'name', 'sort_order', 'published',
     ];
-
-
 }

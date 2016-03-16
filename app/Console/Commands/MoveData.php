@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\ProjectPage;
 use DB;
 use Illuminate\Console\Command;
 
@@ -29,8 +30,42 @@ class MoveData extends Command
     public function handle()
     {
         $this->old = DB::connection('old');
-        // Pages
         $this->movePages();
+        $this->moveProjects();
+    }
+
+    protected function moveProjects()
+    {
+        $this->info('Moving `categories` data');
+        $categories = array_map(function ($i) {
+            return (array) $i;
+        }, $this->old->table('categories')->get());
+        DB::table('categories')->insert($categories);
+
+        $this->info('Moving `projects` data');
+        $projects = array_map(function ($p) {
+            $metadata = $p->brochure !== null
+                ? ['brochure' => $p->brochure]
+                : null;
+
+            return [
+                'id'                      => $p->id,
+                'category_id'             => $p->category_id,
+                'name'                    => $p->name,
+                'published'               => $p->published,
+                'description'             => $p->description,
+                'client'                  => $p->client,
+                'sort_order'              => $p->sort_order,
+                'metadata'                => json_encode($metadata),
+                'text_background_enabled' => (bool) $p->flag_text,
+                'logo_background_enabled' => (bool) $p->flag_logo_nav,
+                'background_colour'       => $p->background_color,
+                'created_at'              => $p->created_at,
+                'updated_at'              => $p->updated_at,
+            ];
+        }, $this->old->table('projects')->get());
+
+        DB::table('projects')->insert($projects);
     }
 
     protected function movePages()

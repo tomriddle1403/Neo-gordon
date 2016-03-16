@@ -8,13 +8,23 @@ use App\Category;
 class Project extends Model
 {
     protected $fillable = [
+        'background_colour',
+        'category_id',
+        'client',
+        'description',
+        'logo_background_enabled',
+        'metadata',
         'name',
         'published',
-        'description',
-        'client',
         'sort_order',
-        'metadata',
-        'category_id',
+        'text_background_enabled',
+    ];
+
+    protected $casts = [
+        'metadata'                => 'array',
+        'published'               => 'bool',
+        'logo_background_enabled' => 'bool',
+        'text_background_enabled' => 'bool',
     ];
 
     public function category()

@@ -15,7 +15,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
-            $table->integer('sort_order', 1);
+            $table->integer('sort_order');
             $table->boolean('published', true);
         });
     }

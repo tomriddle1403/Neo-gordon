@@ -4,14 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Image extends Model
 {
     protected $fillable = [
-        'name',
-        'slug',
-        'content',
-        'metadata',
+        'image_file', 'sort_order',
     ];
-
-
 }

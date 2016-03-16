@@ -10,6 +10,7 @@
 		<div class="form-group">
 			{!! Form::label('email') !!}
 			{!! Form::text('email', Request::get('email'), ['class' => 'form-control']) !!}
+
 		</div>
 
 		<div class="form-group">
@@ -18,7 +19,6 @@
 		</div>
 
 		{!! Form::submit('Login', ['class' => 'btn btn-primary']) !!}
-
 
 
 	{!! Form::close() !!}

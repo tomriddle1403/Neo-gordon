@@ -29,7 +29,6 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
 
 
-
     Route::group(['prefix' => 'back-office'], function () {
         Route::get('login', [
             'as' => 'admin.login',
@@ -44,7 +43,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('logout', [
             'as' => 'admin.logout',
             'uses' => 'Admin\AuthController@logout',
-            //'uses' => 'Auth\AuthController@getLogout',
+
         ]);
 
         // For authenticated users only

@@ -32,6 +32,7 @@ class MoveData extends Command
         $this->old = DB::connection('old');
         $this->movePages();
         $this->moveProjects();
+        $this->moveImages();
     }
 
     protected function moveProjects()
@@ -95,5 +96,32 @@ class MoveData extends Command
 
         $this->info('Insert new data to `pages`');
         DB::table('pages')->insert($pages);
+    }
+
+    protected function moveImages()
+    {
+        $this->info('Moving `project_pages` data');
+        $projectPages = array_map(function ($i) {
+            $map = [
+                1 => ProjectPage::LAYOUT_1,
+                2 => ProjectPage::LAYOUT_1_1,
+                3 => ProjectPage::LAYOUT_1_2,
+            ];
+            return [
+                'id'         => $i->id,
+                'project_id' => $i->project_id,
+                'layout'     => $map[$i->layout_id],
+                'sort_order' => $i->sort_order,
+                'created_at' => $i->created_at,
+                'updated_at' => $i->updated_at,
+            ];
+        }, $this->old->table('project_pages')->get());
+        DB::table('project_pages')->insert($projectPages);
+
+        $this->info('Moving `project_images` data');
+        $projectImages = array_map(function ($i) {
+            return (array) $i;
+        }, $this->old->table('project_images')->get());
+        DB::table('images')->insert($projectImages);
     }
 }
